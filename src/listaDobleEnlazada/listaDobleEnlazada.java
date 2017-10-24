@@ -145,13 +145,21 @@ public class listaDobleEnlazada {
 			flag=false;
 		}else{
 			node temporal=this.head;
-			while(temporal.getNext()!=null){
-				temporal=temporal.getNext();
+			if(temporal.getNext()==null){
+				temporal.setBefore(null);
+				temporal.setNext(null);
+				this.head=null;
+				flag=true;
+			}else{
+				while(temporal.getNext()!=null){
+					temporal=temporal.getNext();
+				}
+				temporal.getBefore().setNext(null);
+				temporal.setBefore(null);
+				temporal.setNext(null);
+				flag=true;
 			}
-			temporal.getBefore().setNext(null);
-			temporal.setBefore(null);
-			temporal.setNext(null);
-			flag=true;
+			
 		}
 		return flag;
 	}
