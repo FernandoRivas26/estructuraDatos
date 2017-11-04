@@ -103,15 +103,10 @@ public class listaDobleEnlazada {
 		}else{
 			cadena.append("Null <===>");
 			node temporal = this.head;
-			//System.out.print("While 1");
 			while(temporal.getNext()!=null){
-				//System.out.println(temporal.getValue().getSong());
 				temporal=temporal.getNext();
 			}
-			//System.out.print("While 2");
-			while(temporal!=null){
-				//System.out.println(temporal.getValue().getSong());
-				
+			while(temporal!=null){				
 					cadena.append(temporal.getValue().getSong()+"<===>");
 					temporal=temporal.getBefore();
 			}
@@ -163,4 +158,4 @@ public class listaDobleEnlazada {
 		}
 		return flag;
 	}
-}
+}	
