@@ -6,7 +6,7 @@ public class actionWorker {
 	
 	private cells top=null;
 	@SuppressWarnings("unused")
-	private int limit=5,actual=0;
+	private int limit=10,actual=0;
 	public void setLimit(int i){
 		this.limit=i;
 	}
