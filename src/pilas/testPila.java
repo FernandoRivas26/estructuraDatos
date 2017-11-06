@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
@@ -18,7 +20,7 @@ public class testPila extends JFrame{
 		super("Pilas");
 		setResizable(false);
 		setTitle("Pilas de Datos");
-		setSize(279, 277);
+		setSize(279, 381);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -33,7 +35,8 @@ public class testPila extends JFrame{
 		getContentPane().add(lblNewLabel_1);
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(6, 45, 265, 201);
+		panel_1.setVisible(true);
+		panel_1.setBounds(6, 45, 265, 305);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -85,6 +88,28 @@ public class testPila extends JFrame{
 		btnImprimir.setBounds(9, 157, 250, 38);
 		panel_1.add(btnImprimir);
 		panel_1.add(btnImprimir);
+		
+		JButton btnFull = new JButton("FULL");
+		btnFull.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(ak.full()){
+					JOptionPane.showMessageDialog(testPila.this, "Espacio disponible: "+ak.count()+"/"+ak.getLimit());
+				}else{
+					JOptionPane.showMessageDialog(testPila.this, "No hay espacio disponible: "+ak.count()+"/"+ak.getLimit());
+				}
+			}
+		});
+		btnFull.setBounds(9, 207, 250, 38);
+		panel_1.add(btnFull);
+		
+		JButton btnNuevoLimite = new JButton("NUEVO LIMITE");
+		btnNuevoLimite.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ak.setLimit(Integer.parseInt(JOptionPane.showInputDialog("Ingresa el nuevo limite de celdas\nLimite anterior:"+ak.getLimit()+"\nNuevo Limite:")));
+			}
+		});
+		btnNuevoLimite.setBounds(9, 257, 250, 38);
+		panel_1.add(btnNuevoLimite);
 
 		
 		panel = new JPanel();
@@ -97,9 +122,13 @@ public class testPila extends JFrame{
 		JButton btnNewButton_1 = new JButton("CANCELAR");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				tfNombre.setText("");
+				tfDep.setText("");
+				textField.setText("");
+				tfId.setText("");
 				panel.setVisible(false);
 				panel_1.setVisible(true);
-				setSize(279, 277);
+				setSize(279, 381);
 			}
 		});
 		btnNewButton_1.setBounds(6, 306, 142, 29);
@@ -124,7 +153,7 @@ public class testPila extends JFrame{
 						tfId.setText("");
 						panel.setVisible(false);
 						panel_1.setVisible(true);
-						setSize(279, 277);
+						setSize(279, 381);
 					}else{
 						JOptionPane.showMessageDialog(testPila.this, "No fue posible guardar los datos","ERROR",JOptionPane.ERROR_MESSAGE);	
 					}
@@ -139,6 +168,12 @@ public class testPila extends JFrame{
 		tfNombre.setBounds(6, 115, 281, 41);
 		panel.add(tfNombre);
 		tfNombre.setColumns(10);
+		tfNombre.addKeyListener(new KeyAdapter(){
+			@Override
+			public void keyTyped(KeyEvent e){
+				tfNombre.setText(tfNombre.getText().toUpperCase());
+			}
+		});
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(6, 98, 61, 16);
@@ -152,6 +187,12 @@ public class testPila extends JFrame{
 		tfDep.setColumns(10);
 		tfDep.setBounds(6, 184, 281, 42);
 		panel.add(tfDep);
+		tfDep.addKeyListener(new KeyAdapter(){
+			@Override
+			public void keyTyped(KeyEvent e){
+				tfDep.setText(tfDep.getText().toUpperCase());
+			}
+		});
 		
 		JLabel lblPuesto = new JLabel("Puesto:");
 		lblPuesto.setBounds(6, 238, 131, 16);
@@ -160,6 +201,12 @@ public class testPila extends JFrame{
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(6, 253, 281, 41);
+		textField.addKeyListener(new KeyAdapter(){
+			@Override
+			public void keyTyped(KeyEvent e){
+				textField.setText(textField.getText().toUpperCase());
+			}
+		});
 		panel.add(textField);
 		
 		JLabel lblIdTrabajador = new JLabel("ID Trabajador");
@@ -170,6 +217,12 @@ public class testPila extends JFrame{
 		tfId.setColumns(10);
 		tfId.setBounds(6, 45, 281, 41);
 		panel.add(tfId);
+		tfId.addKeyListener(new KeyAdapter(){
+			@Override
+			public void keyTyped(KeyEvent e){
+				tfId.setText(tfId.getText().toUpperCase());
+			}
+		});
 		setVisible(true);
 		
 		
