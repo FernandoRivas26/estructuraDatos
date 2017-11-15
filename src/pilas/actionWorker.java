@@ -41,7 +41,9 @@ public class actionWorker {
 			}
 		}else{
 			JOptionPane.showMessageDialog(null, "Llegaste al limite de celdas que es "+limit);
-			return false;
+			limit++;
+			push(wr);
+			return true;
 		}
 	}
 	public boolean pop(){
