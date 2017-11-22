@@ -25,7 +25,7 @@ public class testQueue extends JFrame{
 			super("Colas");
 			setResizable(false);
 			setTitle("Colas de Datos");
-			setSize(279, 228);
+			setSize(279, 373);
 			setVisible(true);
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			setLocationRelativeTo(null);
@@ -41,7 +41,7 @@ public class testQueue extends JFrame{
 			
 			panel_1 = new JPanel();
 			panel_1.setVisible(true);
-			panel_1.setBounds(6, 45, 265, 153);
+			panel_1.setBounds(6, 45, 265, 300);
 			getContentPane().add(panel_1);
 			panel_1.setLayout(null);
 			
@@ -82,6 +82,39 @@ public class testQueue extends JFrame{
 			btnImprimir.setBounds(9, 105, 250, 38);
 			panel_1.add(btnImprimir);
 			panel_1.add(btnImprimir);
+			
+			JButton btnPick = new JButton("PEAK");
+			btnPick.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(testQueue.this, q.peak());
+				}
+			});
+			btnPick.setBounds(9, 155, 250, 38);
+			panel_1.add(btnPick);
+			
+			JButton btnFull = new JButton("FULL");
+			btnFull.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(!q.isEmpty()){
+						JOptionPane.showMessageDialog(testQueue.this, "Cola llena");
+					}
+				}
+			});
+			btnFull.setBounds(9, 205, 250, 38);
+			panel_1.add(btnFull);
+			
+			JButton btnIsEmpty = new JButton("IS EMPTY");
+			btnIsEmpty.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(q.isEmpty()){
+						JOptionPane.showMessageDialog(testQueue.this, "Cola vacia");
+					}else{
+						JOptionPane.showMessageDialog(testQueue.this, "Cola con datos");
+					}
+				}
+			});
+			btnIsEmpty.setBounds(9, 255, 250, 38);
+			panel_1.add(btnIsEmpty);
 
 			
 			panel = new JPanel();
@@ -100,7 +133,7 @@ public class testQueue extends JFrame{
 					tfId.setText("");
 					panel.setVisible(false);
 					panel_1.setVisible(true);
-					setSize(279, 228);
+					setSize(279, 373);
 				}
 			});
 			btnNewButton_1.setBounds(6, 306, 142, 29);
@@ -125,7 +158,7 @@ public class testQueue extends JFrame{
 							tfId.setText("");
 							panel.setVisible(false);
 							panel_1.setVisible(true);
-							setSize(279, 228);
+							setSize(279, 373);
 						}else{
 							JOptionPane.showMessageDialog(testQueue.this, "No fue posible guardar los datos","ERROR",JOptionPane.ERROR_MESSAGE);	
 						}

@@ -2,6 +2,7 @@ package colas;
 import javax.swing.JOptionPane;
 public class queues {
 private node pick;
+
 public boolean isEmpty(){
 	boolean flag= false;
 	if(this.pick==null) flag=true;
@@ -55,5 +56,12 @@ public StringBuilder print(){
 	}
 	chain.append("NULL");
 	return chain;
+}
+public String peak(){
+	if(pick!=null){
+		return this.pick.getData().getName();
+	}else{
+		return "Null";
+	}
 }
 }

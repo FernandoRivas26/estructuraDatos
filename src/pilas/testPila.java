@@ -21,7 +21,6 @@ public class testPila extends JFrame{
 		setResizable(false);
 		setTitle("Pilas de Datos");
 		setSize(279, 381);
-		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
@@ -224,7 +223,7 @@ public class testPila extends JFrame{
 			}
 		});
 		setVisible(true);
-		
+
 		
 	}
 	public static void main(String[] args){
